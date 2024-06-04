@@ -529,6 +529,28 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'typescript-language-server',
+        'tailwindcss-language-server',
+        'eslint-lsp',
+        'prettierd',
+        'astro-language-server',
+        'clangd',
+        'cpplint',
+        'cpptools',
+        'css-lsp',
+        'css-variables-language-server',
+        'emmet-language-server',
+        'emmet-ls',
+        'eslint-lsp',
+        'gopls',
+        'html-lsp',
+        'htmlhint',
+        'lua-language-server',
+        'pyright',
+        'rust-analyzer',
+        'rustywind',
+        'stylua',
+        'biome',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -555,7 +577,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = false, cpp = false }
         return {
           timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -564,11 +586,11 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { 'prettierd', 'prettier' } },
       },
     },
   },
